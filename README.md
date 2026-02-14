@@ -1,305 +1,254 @@
 # 🚀 DevOps Infrastructure Complete
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Docker](https://img.shields.io/badge/Docker-Ready-blue)](https://www.docker.com/)
-[![Kubernetes](https://img.shields.io/badge/Kubernetes-K3s-326CE5)](https://k3s.io/)
-[![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-D24939)](https://www.jenkins.io/)
+<div align="center">
 
-Infrastructure DevOps complète avec CI/CD, monitoring, et orchestration Kubernetes - Prête pour la production.
+![DevOps](https://img.shields.io/badge/DevOps-Infrastructure-blue?style=for-the-badge&logo=kubernetes)
+![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
+![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/Kubernetes-K3s-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white)
+![Jenkins](https://img.shields.io/badge/Jenkins-CI%2FCD-D24939?style=for-the-badge&logo=jenkins&logoColor=white)
+![Prometheus](https://img.shields.io/badge/Prometheus-Monitoring-E6522C?style=for-the-badge&logo=prometheus&logoColor=white)
+![Grafana](https://img.shields.io/badge/Grafana-Dashboards-F46800?style=for-the-badge&logo=grafana&logoColor=white)
 
-![DevOps Architecture](docs/architecture-diagram.png)
+**Infrastructure DevOps complète avec CI/CD, Monitoring et Orchestration Kubernetes**
+
+[Installation](#-installation-rapide) •
+[Documentation](#-documentation) •
+[Architecture](#️-architecture) •
+[Contribution](#-contribution)
+
+</div>
+
+---
 
 ## 📋 Table des Matières
 
-- [Vue d'ensemble](#vue-densemble)
-- [Architecture](#architecture)
-- [Services Déployés](#services-déployés)
-- [Installation Rapide](#installation-rapide)
-- [Configuration](#configuration)
-- [Utilisation](#utilisation)
-- [Documentation](#documentation)
-- [Contribution](#contribution)
+- [Vue d'ensemble](#-vue-densemble)
+- [Fonctionnalités](#-fonctionnalités)
+- [Architecture](#️-architecture)
+- [Services](#️-services-déployés)
+- [Installation Rapide](#-installation-rapide)
+- [Configuration](#-configuration)
+- [Utilisation](#-utilisation)
+- [Documentation](#-documentation)
+- [Screenshots](#-screenshots)
+- [Contribution](#-contribution)
+- [License](#-license)
+
+---
 
 ## 🎯 Vue d'ensemble
 
-Cette infrastructure DevOps fournit une solution complète et prête à l'emploi pour :
+Cette infrastructure DevOps fournit une **solution complète et prête pour la production** comprenant :
 
-- ✅ **CI/CD automatisé** avec Jenkins
+- ✅ **CI/CD Pipeline** automatisé avec Jenkins
 - ✅ **Monitoring temps réel** avec Prometheus & Grafana
 - ✅ **Orchestration de containers** avec Kubernetes (K3s)
 - ✅ **GitOps** avec ArgoCD
 - ✅ **Analyse de code** avec SonarQube
 - ✅ **Gestion Docker** avec Portainer
 - ✅ **Infrastructure as Code** avec Terraform & Ansible
+- ✅ **Dashboard web** centralisé
+
+## ✨ Fonctionnalités
+
+### CI/CD
+- 🔄 Pipelines automatisés Jenkins
+- 🔍 Analyse de qualité SonarQube
+- 🐳 Build et push Docker automatiques
+- ☸️ Déploiement Kubernetes via ArgoCD
+
+### Monitoring
+- 📊 Dashboards Grafana pré-configurés
+- 📈 Métriques Prometheus
+- 💻 Monitoring système (Node Exporter)
+- 🐋 Métriques containers (cAdvisor)
+
+### Infrastructure
+- ⚙️ Déploiement en 1-click
+- 🔒 Sécurisé par défaut
+- 📦 Containerisé et portable
+- 🔄 Auto-scaling & self-healing
 
 ## 🏗️ Architecture
 ```
-┌─────────────────────────────────────────────────────────────┐
-│                    AWS EC2 Ubuntu Instance                  │
-│                                                             │
-│  ├── Jenkins (CI/CD)              :8080                    │
-│  ├── Portainer (Docker GUI)       :9000                    │
-│  ├── Grafana (Monitoring)         :3000                    │
-│  ├── Prometheus (Metrics)         :9090                    │
-│  ├── SonarQube (Code Quality)     :9002                    │
-│  ├── ArgoCD (GitOps)              :30080                   │
-│  ├── Demo App (Node.js)           :3001                    │
-│  └── Dashboard (Web)              :1122                    │
-│                                                             │
-│  Kubernetes (K3s) + Docker Engine                          │
-└─────────────────────────────────────────────────────────────┘
+┌─────────────────────────────────────────────────────────┐
+│              AWS EC2 Ubuntu Instance                    │
+│                                                         │
+│  ┌──────────────────────────────────────────────────┐  │
+│  │           Docker & Kubernetes (K3s)              │  │
+│  │                                                  │  │
+│  │  CI/CD          Monitoring        Management    │  │
+│  │  ├─ Jenkins     ├─ Prometheus    ├─ Portainer  │  │
+│  │  ├─ ArgoCD      ├─ Grafana       ├─ SonarQube  │  │
+│  │  └─ GitLab R.   └─ Exporters     └─ Dashboard  │  │
+│  │                                                  │  │
+│  │  Application: Node.js Demo (Port 3001)          │  │
+│  └──────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────┘
 ```
+
+Voir [docs/architecture-diagram.txt](docs/architecture-diagram.txt) pour le diagramme complet.
 
 ## 🛠️ Services Déployés
 
-| Service | Port(s) | Description | Credentials |
-|---------|---------|-------------|-------------|
-| 🔧 **Jenkins** | 8080, 50000 | CI/CD Pipeline Automation | admin / [initial password] |
-| 🐳 **Portainer** | 9000, 9443 | Docker Container Management | admin / [set on first login] |
-| 📊 **Grafana** | 3000 | Monitoring Dashboards | admin / admin |
-| 📈 **Prometheus** | 9090 | Metrics Collection & Storage | - |
-| 🔍 **SonarQube** | 9002 | Code Quality Analysis | admin / admin |
-| 🔄 **ArgoCD** | 30080 | GitOps Continuous Delivery | admin / [kubectl get secret] |
-| 💻 **Node Exporter** | 9100 | System Metrics Exporter | - |
-| 🐋 **cAdvisor** | 8082 | Container Metrics Analyzer | - |
-| 🚀 **Demo App** | 3001 | Node.js Express Application | - |
-| 🌐 **Dashboard** | 1122 | Web Dashboard | - |
-
-## 📋 Prérequis
-
-### Matériel (AWS EC2 Recommandé)
-
-- **OS** : Ubuntu 22.04 LTS ou supérieur
-- **RAM** : 8GB minimum (16GB recommandé)
-- **CPU** : 4 cores minimum (16 cores recommandé)
-- **Stockage** : 50GB minimum (100GB recommandé)
-- **Network** : Connexion internet stable
-
-### Logiciels
-
-- Git
-- Docker & Docker Compose (installé automatiquement)
-- Kubernetes (K3s - installé automatiquement)
-- Accès sudo
+| Service | Port(s) | Description | Status |
+|---------|---------|-------------|--------|
+| 🔧 **Jenkins** | 8080, 50000 | CI/CD Pipeline | ![Status](https://img.shields.io/badge/status-operational-success) |
+| 🐳 **Portainer** | 9000, 9443 | Docker Management | ![Status](https://img.shields.io/badge/status-operational-success) |
+| 📊 **Grafana** | 3000 | Monitoring Dashboards | ![Status](https://img.shields.io/badge/status-operational-success) |
+| 📈 **Prometheus** | 9090 | Metrics Collection | ![Status](https://img.shields.io/badge/status-operational-success) |
+| 🔍 **SonarQube** | 9002 | Code Quality | ![Status](https://img.shields.io/badge/status-operational-success) |
+| 🔄 **ArgoCD** | 30080 | GitOps CD | ![Status](https://img.shields.io/badge/status-operational-success) |
+| 🚀 **Demo App** | 3001 | Node.js App | ![Status](https://img.shields.io/badge/status-operational-success) |
+| 🌐 **Dashboard** | 1122 | Web Interface | ![Status](https://img.shields.io/badge/status-operational-success) |
 
 ## 🚀 Installation Rapide
 
-### Méthode 1 : Installation Automatique (Recommandé)
+### Prérequis
+
+- Ubuntu 22.04+ (AWS EC2 recommandé)
+- 8GB RAM minimum
+- 4 CPU cores minimum
+- 50GB de stockage
+- Accès sudo
+
+### Installation en 3 commandes
 ```bash
 # 1. Cloner le repository
 git clone https://github.com/VOTRE-USERNAME/devops-infrastructure.git
 cd devops-infrastructure
 
-# 2. Lancer l'installation complète
-cd scripts
-sudo ./install-all.sh
+# 2. Installer l'infrastructure
+cd scripts && sudo ./install-all.sh
 
-# 3. Reconnectez-vous pour appliquer les permissions Docker
-exit
-# Reconnectez-vous via SSH
-
-# 4. Déployer les services
-cd ~/devops-infrastructure/scripts
+# 3. Déployer les services
 ./deploy.sh
 ```
 
-### Méthode 2 : Docker Compose (Tout en un)
+### Installation via Docker Compose
 ```bash
-# Cloner le repository
-git clone https://github.com/VOTRE-USERNAME/devops-infrastructure.git
-cd devops-infrastructure
-
-# Démarrer tous les services
+# Tout en une commande
 docker-compose up -d
-
-# Vérifier
-docker-compose ps
 ```
 
-### Méthode 3 : Déploiement Kubernetes
+### Déploiement Kubernetes
 ```bash
-# Appliquer les manifestes Kubernetes
+# Déployer sur K8s
 kubectl apply -f kubernetes/
 
-# Vérifier les pods
+# Vérifier
 kubectl get pods -n devops-app
-
-# Accéder à l'application
-kubectl port-forward service/devops-demo-service 3001:3000 -n devops-app
 ```
 
-## 🔧 Configuration
+## ⚙️ Configuration
 
-### Configuration AWS Security Group
+### AWS Security Group
 
-Ouvrez ces ports dans votre AWS Security Group :
-```bash
 Ports à ouvrir :
-- 22 (SSH)
-- 1122 (Dashboard)
-- 3000 (Grafana)
-- 3001 (Demo App)
-- 8080, 50000 (Jenkins)
-- 8082 (cAdvisor)
-- 9000, 9443 (Portainer)
-- 9002 (SonarQube)
-- 9090 (Prometheus)
-- 9100 (Node Exporter)
-- 30080 (ArgoCD)
+```
+22, 1122, 3000, 3001, 8080, 8082, 9000, 9002, 9090, 9100, 9443, 30080, 50000
 ```
 
-### Configuration des Services
+### Credentials par défaut
 
-#### Jenkins
-```bash
-# Récupérer le mot de passe initial
-docker exec jenkins cat /var/jenkins_home/secrets/initialAdminPassword
-```
+| Service | Username | Password |
+|---------|----------|----------|
+| Jenkins | admin | (voir logs) |
+| Grafana | admin | admin |
+| SonarQube | admin | admin |
+| ArgoCD | admin | (kubectl get secret) |
+| Portainer | admin | (first login) |
 
-#### ArgoCD
-```bash
-# Récupérer le mot de passe admin
-kubectl -n argocd get secret argocd-initial-admin-secret \
-    -o jsonpath="{.data.password}" | base64 -d && echo
-```
-
-#### Grafana
-- Login: `admin`
-- Password: `admin` (à changer à la première connexion)
-
-Voir [docs/CONFIGURATION.md](docs/CONFIGURATION.md) pour plus de détails.
+⚠️ **Changez tous les mots de passe en production !**
 
 ## 📖 Utilisation
 
-### Accès aux Services
+### Accès aux services
 
-Remplacez `YOUR_IP` par votre adresse IP publique AWS :
+Remplacez `YOUR_IP` par votre IP publique :
+```
+Dashboard:   http://YOUR_IP:1122
+Jenkins:     http://YOUR_IP:8080
+Grafana:     http://YOUR_IP:3000
+Prometheus:  http://YOUR_IP:9090
+SonarQube:   http://YOUR_IP:9002
+ArgoCD:      http://YOUR_IP:30080
+Portainer:   http://YOUR_IP:9000
+Demo App:    http://YOUR_IP:3001
+```
 
-- **Dashboard Principal** : http://YOUR_IP:1122
-- **Jenkins** : http://YOUR_IP:8080
-- **Grafana** : http://YOUR_IP:3000
-- **Prometheus** : http://YOUR_IP:9090
-- **SonarQube** : http://YOUR_IP:9002
-- **ArgoCD** : http://YOUR_IP:30080
-- **Portainer** : http://YOUR_IP:9000
-- **Demo Application** : http://YOUR_IP:3001
-
-### Commandes Utiles
+### Commandes utiles
 ```bash
-# Voir tous les containers
-docker ps
+# Monitoring
+./scripts/monitor.sh
 
-# Voir les logs d'un service
-docker logs -f <service_name>
+# Backup
+./scripts/backup.sh
 
-# Redémarrer un service
-docker restart <service_name>
+# Cleanup
+./scripts/cleanup.sh
 
-# Monitoring des ressources
-docker stats
-
-# Kubernetes
-kubectl get pods -A
-kubectl get svc -A
-
-# Scripts utiles
-cd scripts
-./monitor.sh      # Monitoring en temps réel
-./backup.sh       # Backup de l'infrastructure
-./cleanup.sh      # Nettoyage complet
+# Logs
+docker-compose logs -f [service]
 ```
 
 ## 📚 Documentation
 
-- [📖 Guide d'Installation Complet](docs/INSTALLATION.md)
-- [⚙️ Guide de Configuration](docs/CONFIGURATION.md)
-- [🏗️ Architecture Détaillée](docs/ARCHITECTURE.md)
-- [🔧 Guide de Dépannage](docs/TROUBLESHOOTING.md)
+- 📖 [Guide d'Installation](docs/INSTALLATION.md)
+- ⚙️ [Configuration](docs/CONFIGURATION.md)
+- 🔧 [Troubleshooting](docs/TROUBLESHOOTING.md)
+- 📊 [Status du Projet](STATUS.md)
 
-## 🔄 Workflow CI/CD
-```
-Developer Push Code
-        ↓
-    GitHub/GitLab
-        ↓
-    Jenkins (Poll/Webhook)
-        ↓
-    Build & Test (npm)
-        ↓
-    SonarQube Analysis
-        ↓
-    Docker Build
-        ↓
-    Deploy to Docker/K8s
-        ↓
-    ArgoCD Sync (GitOps)
-        ↓
-    Application Running
-        ↓
-    Prometheus Metrics
-        ↓
-    Grafana Dashboards
-```
+## 📸 Screenshots
 
-## 📊 Monitoring
+### Dashboard
+![Dashboard](docs/screenshots/dashboard.png)
 
-### Dashboards Grafana Pré-configurés
+### Grafana Monitoring
+![Grafana](docs/screenshots/grafana.png)
 
-- **Node Exporter Full** : Métriques système détaillées
-- **Docker Container & Host** : Monitoring Docker
-- **Jenkins Performance** : Métriques Jenkins
-- **Kubernetes Cluster** : Overview du cluster K8s
+### Jenkins Pipeline
+![Jenkins](docs/screenshots/jenkins.png)
 
-### Métriques Collectées
-
-- CPU, RAM, Disk, Network (Node Exporter)
-- Container stats (cAdvisor)
-- Jenkins builds, queue, jobs
-- Application custom metrics
-
-## 🔐 Sécurité
-
-### Bonnes Pratiques Implémentées
-
-- ✅ Containers isolés dans un réseau Docker
-- ✅ Volumes persistants pour les données
-- ✅ Restart policies configurées
-- ✅ Health checks sur l'application
-- ✅ Resource limits sur les containers
-- ✅ Secrets management avec Kubernetes
-
-### À Configurer
-
-- [ ] Changer TOUS les mots de passe par défaut
-- [ ] Configurer SSL/TLS (Let's Encrypt)
-- [ ] Mettre en place l'authentification SSO
-- [ ] Configurer des backups automatiques
-- [ ] Activer les scans de sécurité des images
+*Screenshots à ajouter*
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! Merci de :
+Les contributions sont les bienvenues ! Consultez [CONTRIBUTING.md](CONTRIBUTING.md)
 
-1. Fork le projet
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit vos changements (`git commit -m 'Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrir une Pull Request
+### Quick Start
+```bash
+# Fork le projet
+git clone https://github.com/votre-username/devops-infrastructure.git
+
+# Créer une branche
+git checkout -b feature/amazing-feature
+
+# Commit
+git commit -m 'feat: add amazing feature'
+
+# Push
+git push origin feature/amazing-feature
+
+# Ouvrir une Pull Request
+```
 
 ## 📝 Changelog
 
-Voir [CHANGELOG.md](CHANGELOG.md) pour l'historique des versions.
+Voir [CHANGELOG.md](CHANGELOG.md)
 
 ## 📄 License
 
-Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
+MIT License - voir [LICENSE](LICENSE)
 
 ## 👨‍💻 Auteur
 
 **Votre Nom**
-- GitHub: [@votre-username](https://github.com/votre-username)
-- LinkedIn: [Votre Profil](https://linkedin.com/in/votre-profil)
-- Email: votre.email@example.com
+
+[![GitHub](https://img.shields.io/badge/GitHub-@votre--username-181717?style=flat&logo=github)](https://github.com/votre-username)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Votre%20Profil-0077B5?style=flat&logo=linkedin)](https://linkedin.com/in/votre-profil)
+[![Email](https://img.shields.io/badge/Email-votre.email%40example.com-D14836?style=flat&logo=gmail&logoColor=white)](mailto:votre.email@example.com)
 
 ## 🙏 Remerciements
 
@@ -308,11 +257,14 @@ Ce projet est sous licence MIT. Voir [LICENSE](LICENSE) pour plus de détails.
 - [Jenkins](https://www.jenkins.io/)
 - [Prometheus](https://prometheus.io/)
 - [Grafana](https://grafana.com/)
-- [ArgoCD](https://argoproj.github.io/cd/)
-- [SonarQube](https://www.sonarqube.org/)
+- [ArgoCD](https://argoproj.github.io/)
 
 ---
+
+<div align="center">
 
 **⭐ Si ce projet vous est utile, n'hésitez pas à lui donner une étoile !**
 
 Made with ❤️ for the DevOps Community
+
+</div>
