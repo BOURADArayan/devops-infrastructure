@@ -1,0 +1,56 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+.dockerignore
+
+# Kubernetes
+*.kubeconfig
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+
+# Ansible
+*.retry
+
+# Secrets
+secrets/
+*.key
+*.pem
+*.crt
+
+# Backups
+backups/
+*.tar.gz
+*.zip
+
+# Temporary files
+tmp/
+temp/
+*.tmp

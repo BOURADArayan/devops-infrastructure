@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Architecture DevOps - Diagramme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .back-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-bottom: 20px;
+            transition: opacity 0.3s;
+        }
+        
+        .back-link:hover {
+            opacity: 0.8;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 1.2em;
+        }
+        
+        .diagram {
+            background: #f9f9f9;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+        }
+        
+        .layer {
+            margin-bottom: 20px;
+            border: 2px solid #2a5298;
+            border-radius: 10px;
+            padding: 20px;
+            background: white;
+        }
+        
+        .layer-title {
+            font-size: 1.3em;
+            color: #1e3c72;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 5px;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .service {
+            background: #f0f4ff;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .service-name {
+            font-weight: bold;
+            color: #1e3c72;
+            margin-bottom: 5px;
+        }
+        
+        .service-port {
+            color: #e91e63;
+            font-size: 0.9em;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .arrow {
+            text-align: center;
+            font-size: 2em;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        
+        .connections {
+            background: #e3f2fd;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 30px;
+        }
+        
+        .connection-item {
+            padding: 10px;
+            margin-bottom: 10px;
+            background: white;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        tr:hover {
+            background: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Retour au Dashboard</a>
+        
+        <h1>🏗️ Architecture DevOps Complète</h1>
+        <p class="subtitle">Infrastructure déployée sur AWS EC2 Ubuntu</p>
+        
+        <div class="diagram">
+            <div class="layer">
+                <div class="layer-title">🌐 Internet & Utilisateurs</div>
+                <div style="text-align: center; padding: 20px;">
+                    <div style="display: inline-block; background: #4CAF50; color: white; padding: 20px 40px; border-radius: 10px; font-size: 1.2em;">
+                        👥 Users Access via Public 44.202.7.193
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow">⬇️</div>
+            
+            <div class="layer">
+                <div class="layer-title">🔧 CI/CD & Automation Layer</div>
+                <div class="services">
+                    <div class="service">
+                        <div class="service-name">🔧 Jenkins</div>
+                        <div class="service-port">:8080, :50000</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">CI/CD Pipeline</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">🔄 ArgoCD</div>
+                        <div class="service-port">:30080</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">GitOps CD</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">🔍 SonarQube</div>
+                        <div class="service-port">:9002</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">Code Quality</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow">⬇️ Build & Deploy</div>
+            
+            <div class="layer">
+                <div class="layer-title">🚀 Application Layer</div>
+                <div class="services">
+                    <div class="service" style="background: #e8f5e9;">
+                        <div class="service-name">🌐 Demo App</div>
+                        <div class="service-port">:3001</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">Node.js Express</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow">⬇️ Metrics & Logs</div>
+            
+            <div class="layer">
+                <div class="layer-title">📊 Monitoring & Observability Layer</div>
+                <div class="services">
+                    <div class="service">
+                        <div class="service-name">📈 Prometheus</div>
+                        <div class="service-port">:9090</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">Metrics Store</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">📊 Grafana</div>
+                        <div class="service-port">:3000</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">Dashboards</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">💻 Node Exporter</div>
+                        <div class="service-port">:9100</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">System Metrics</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">🐋 cAdvisor</div>
+                        <div class="service-port">:8082</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">Container Metrics</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="arrow">⬇️</div>
+            
+            <div class="layer">
+                <div class="layer-title">🐳 Infrastructure Layer</div>
+                <div class="services">
+                    <div class="service">
+                        <div class="service-name">🐳 Docker</div>
+                        <div class="service-port">Container Runtime</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">🐳 Portainer</div>
+                        <div class="service-port">:9000</div>
+                        <div style="font-size: 0.8em; margin-top: 5px;">Docker GUI</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">☸️ Kubernetes</div>
+                        <div class="service-port">K3s Cluster</div>
+                    </div>
+                    <div class="service">
+                        <div class="service-name">⚙️ Terraform</div>
+                        <div class="service-port">IaC Tool</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="connections">
+            <h2 style="color: #1e3c72; margin-bottom: 20px;">🔗 Relations entre Services</h2>
+            
+            <div class="connection-item">
+                <strong>Jenkins → Application</strong><br>
+                Jenkins build l'image Docker → Déploie le container → Vérifie le déploiement
+            </div>
+            
+            <div class="connection-item">
+                <strong>Prometheus → Collecte Métriques</strong><br>
+                Scrape Jenkins (:8080/prometheus) + Node Exporter (:9100) + cAdvisor (:8082)
+            </div>
+            
+            <div class="connection-item">
+                <strong>Grafana → Prometheus</strong><br>
+                Utilise Prometheus comme data source → Affiche dashboards visuels
+            </div>
+            
+            <div class="connection-item">
+                <strong>ArgoCD → Kubernetes</strong><br>
+                Synchronise les manifests Git → Déploie sur K3s → GitOps workflow
+            </div>
+            
+            <div class="connection-item">
+                <strong>Portainer → Docker</strong><br>
+                Interface graphique → Gère containers, images, volumes, networks
+            </div>
+        </div>
+        
+        <h2 style="color: #1e3c72; margin-top: 40px; margin-bottom: 20px;">📊 Table des Services</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Service</th>
+                    <th>Port(s)</th>
+                    <th>Fonction</th>
+                    <th>URL</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>🔧 Jenkins</td>
+                    <td>8080, 50000</td>
+                    <td>CI/CD Pipeline</td>
+                    <td>http://localhost:8080</td>
+                </tr>
+                <tr>
+                    <td>🐳 Portainer</td>
+                    <td>9000, 9443</td>
+                    <td>Docker Management</td>
+                    <td>http://localhost:9000</td>
+                </tr>
+                <tr>
+                    <td>📊 Grafana</td>
+                    <td>3000</td>
+                    <td>Monitoring Dashboards</td>
+                    <td>http://localhost:3000</td>
+                </tr>
+                <tr>
+                    <td>📈 Prometheus</td>
+                    <td>9090</td>
+                    <td>Metrics Storage</td>
+                    <td>http://localhost:9090</td>
+                </tr>
+                <tr>
+                    <td>🔍 SonarQube</td>
+                    <td>9002</td>
+                    <td>Code Quality</td>
+                    <td>http://localhost:9002</td>
+                </tr>
+                <tr>
+                    <td>🔄 ArgoCD</td>
+                    <td>30080</td>
+                    <td>GitOps Deployment</td>
+                    <td>http://localhost:30080</td>
+                </tr>
+                <tr>
+                    <td>🌐 Demo App</td>
+                    <td>3001</td>
+                    <td>Node.js Application</td>
+                    <td>http://localhost:3001</td>
+                </tr>
+                <tr>
+                    <td>💻 Node Exporter</td>
+                    <td>9100</td>
+                    <td>System Metrics</td>
+                    <td>http://localhost:9100</td>
+                </tr>
+                <tr>
+                    <td>🐋 cAdvisor</td>
+                    <td>8082</td>
+                    <td>Container Metrics</td>
+                    <td>http://localhost:8082</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="index.html" class="back-link">← Retour au Dashboard</a>
+        </div>
+    </div>
+</body>
+</html>
